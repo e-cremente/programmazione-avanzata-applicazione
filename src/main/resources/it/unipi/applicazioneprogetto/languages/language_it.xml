@@ -1,0 +1,14 @@
+<linguaggio>
+    <!-- oggetti interfaccia grafica -->
+    <textTitle>MyAnimeTracker</textTitle>
+    <textUsername>Nome Utente</textUsername>
+    <textPassword>Password</textPassword>
+    <buttonLogin>Accedi</buttonLogin>
+    <textRegister>Non sei ancora registrato?</textRegister>
+    <buttonRegister>Registrati</buttonRegister>
+    <!-- messaggi di successo -->
+    <correttaRegistrazione>Registrazione Completata!</correttaRegistrazione>
+    <!-- messaggi di errore -->
+    <erroreUserPwdBlank>Inserisci il Nome Utente e/o la Password</erroreUserPwdBlank>  
+    <erroreUserFound>Nome Utente già in uso</erroreUserFound> 
+</linguaggio>
