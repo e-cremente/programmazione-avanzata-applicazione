@@ -6,9 +6,16 @@
     <buttonLogin>Login</buttonLogin>
     <textRegister>Not registered yet?</textRegister>
     <buttonRegister>Sign Up</buttonRegister>
+    <textRegistrati>Sign Up</textRegistrati>
+    <labelUserReg>Username</labelUserReg>
+    <labelPwdReg>Password</labelPwdReg>
+    <buttonRegistrazione>Create your account</buttonRegistrazione>
+    <buttonGoToLogin>Go back to login page</buttonGoToLogin>
+    <textLingua>Language</textLingua>
     <!-- messaggi di successo -->
     <correttaRegistrazione>Registration Complete!</correttaRegistrazione>
     <!-- messaggi di errore -->
     <erroreUserPwdBlank>Insert Username and/or Password</erroreUserPwdBlank>
     <erroreUserFound>Username already in use</erroreUserFound>
+    <erroreUserNotFound>Username and/or Password are invalid</erroreUserNotFound>
 </linguaggio>

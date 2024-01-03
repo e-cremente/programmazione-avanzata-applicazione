@@ -14,6 +14,9 @@ import java.io.Serializable;
 
 @XStreamAlias("linguaggio")
 public class Linguaggio implements Serializable{
+    
+    public static String lang = "English";
+    
     //oggetti interfaccia grafica
     public String textTitle;
     public String textUsername;
@@ -21,6 +24,12 @@ public class Linguaggio implements Serializable{
     public String buttonLogin;
     public String textRegister;
     public String buttonRegister;
+    public String textRegistrati;
+    public String labelUserReg;
+    public String labelPwdReg;
+    public String buttonRegistrazione;
+    public String buttonGoToLogin;
+    public String textLingua;
     
     //messaggi di successo
     public String correttaRegistrazione;
@@ -28,4 +37,5 @@ public class Linguaggio implements Serializable{
     //messaggi di errore
     public String erroreUserPwdBlank;
     public String erroreUserFound;
+    public String erroreUserNotFound;
 }

@@ -6,9 +6,16 @@
     <buttonLogin>Accedi</buttonLogin>
     <textRegister>Non sei ancora registrato?</textRegister>
     <buttonRegister>Registrati</buttonRegister>
+    <textRegistrati>Registrati</textRegistrati>
+    <labelUserReg>Nome Utente</labelUserReg>
+    <labelPwdReg>Password</labelPwdReg>
+    <buttonRegistrazione>Crea il tuo account</buttonRegistrazione>
+    <buttonGoToLogin>Torna alla pagina di login</buttonGoToLogin>
+    <textLingua>Lingua</textLingua>
     <!-- messaggi di successo -->
     <correttaRegistrazione>Registrazione Completata!</correttaRegistrazione>
     <!-- messaggi di errore -->
     <erroreUserPwdBlank>Inserisci il Nome Utente e/o la Password</erroreUserPwdBlank>  
-    <erroreUserFound>Nome Utente già in uso</erroreUserFound> 
+    <erroreUserFound>Nome Utente già in uso</erroreUserFound>
+    <erroreUserNotFound>Il Nome Utente o la Password sono errati</erroreUserNotFound> 
 </linguaggio>

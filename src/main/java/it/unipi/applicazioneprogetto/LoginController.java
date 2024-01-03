@@ -4,12 +4,14 @@ import com.thoughtworks.xstream.XStream;
 import com.thoughtworks.xstream.security.AnyTypePermission;
 import java.io.BufferedReader;
 import java.io.DataOutputStream;
+import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import javafx.concurrent.Task;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
@@ -30,35 +32,59 @@ public class LoginController {
     @FXML private PasswordField fieldPassword;
     @FXML private VBox vboxLogin;
     @FXML private Text textMessage;
+    @FXML private Text textLingua;
+    @FXML private ChoiceBox choiceboxLingua;
     
     private static final Logger logger = LogManager.getLogger(LoginController.class);
     private Linguaggio lang;
-    String linguaggio;
     
     //funzione di inizializzazione
     @FXML
     public void initialize(){
+        choiceboxLingua.getItems().addAll("Italiano", "English");
+        choiceboxLingua.setValue(Linguaggio.lang);   
+        choiceboxLingua.setOnAction(e -> {changeLanguage();});
+        changeLanguage();            
+    }
+    
+    private void changeLanguage(){
         XStream xstream = new XStream();
         xstream.addPermission(AnyTypePermission.ANY);
         xstream.alias("linguaggio", Linguaggio.class);
-        lang = (Linguaggio) xstream.fromXML(getClass().getResource("languages/language_en.xml"));
-        linguaggio = "inglese";
-        changeLanguage();
+        Linguaggio.lang = choiceboxLingua.getValue().toString();
+        lang = (Linguaggio) xstream.fromXML(getClass().getResource("languages/language_"+ Linguaggio.lang +".xml"));      
+        changeLanguageText();
     }
     
     //funzione da chiamare ogni volta che la lingua viene cambiata (o all'avvio)
-    public void changeLanguage(){
+    private void changeLanguageText(){
         textTitle.setText(lang.textTitle);
         textUsername.setText(lang.textUsername);
         textPassword.setText(lang.textPassword);
         buttonLogin.setText(lang.buttonLogin);
         textRegister.setText(lang.textRegister);
         buttonRegister.setText(lang.buttonRegister);
+        textLingua.setText(lang.textLingua);
+    }
+
+    //funzione che rimuove eventuali testi temporanei
+    //viene chiamata quando si clicca in un punto qualsiasi dell'interfaccia
+    @FXML
+    private void removeTemporary(){
+        textMessage.setText("");
+    }
+    
+    //metodo che porta alla visualizzazione della schermata di registrazione
+    //invocato quando si preme il tasto di registrazione
+    @FXML
+    private void goToRegistrationPage() throws IOException{
+        App.setRoot("registrazione");
     }
     
     //funzione per registrare nel database un nuovo utente.
+    //invocato alla premuta del tasto di registrazione
     @FXML
-    private void registraUtente(){
+    private void login(){
         if(fieldUsername.getText().isBlank() || fieldPassword.getText().isBlank()){
             textMessage.setText(lang.erroreUserPwdBlank);    
             return;
@@ -67,7 +93,7 @@ public class LoginController {
         @Override public Void call(){
             try{
                 //creo una connessione verso l'url, con i passaggi necessari per specificare che è POST
-                URL url = new URL("http://localhost:8080/utente");
+                URL url = new URL("http://localhost:8080/login");
                 HttpURLConnection con = (HttpURLConnection) url.openConnection();
                 con.setRequestMethod("POST");
                 con.setDoOutput(true);
@@ -91,11 +117,12 @@ public class LoginController {
                     content.append(inputLine);
                 }
                 in.close();
-                
-                if(content.equals("OK")){
-                    textMessage.setText(lang.correttaRegistrazione);          
+
+                if(content.toString().equals("OK")){
+                    //App.setRoot("home"); to do
+                    textMessage.setText("pagina home");
                 } else {
-                    textMessage.setText(lang.erroreUserFound);  
+                    textMessage.setText(lang.erroreUserNotFound);  
                 }
 
             }catch(Exception e){
@@ -106,13 +133,6 @@ public class LoginController {
         };
         
         new Thread(task).start();
-    }
-
-    //funzione che rimuove eventuali testi temporanei
-    //viene chiamata quando si clicca in un punto qualsiasi dell'interfaccia
-    @FXML
-    private void removeTemporary(){
-        textMessage.setText("");
     }
     
     /*
