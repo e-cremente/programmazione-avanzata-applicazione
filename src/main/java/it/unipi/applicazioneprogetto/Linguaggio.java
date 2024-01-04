@@ -30,6 +30,15 @@ public class Linguaggio implements Serializable{
     public String buttonRegistrazione;
     public String buttonGoToLogin;
     public String textLingua;
+    public String idCol;
+    public String nomeCol;
+    public String finishedCol;
+    public String episodesCol;
+    public String scoreCol;
+    public String buttonLogout;
+    public String textBenvenuto;
+    public String textCopertina;
+    public String textTopCento;
     
     //messaggi di successo
     public String correttaRegistrazione;

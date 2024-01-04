@@ -10,6 +10,7 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import javafx.concurrent.Task;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
@@ -37,6 +38,7 @@ public class LoginController {
     
     private static final Logger logger = LogManager.getLogger(LoginController.class);
     private Linguaggio lang;
+    public static String utente;
     
     //funzione di inizializzazione
     @FXML
@@ -47,6 +49,7 @@ public class LoginController {
         changeLanguage();            
     }
     
+    //metodo che prende il valore all'interno del box della lingua, lo assegna a una variabile, e in base a quello cambia la lingua
     private void changeLanguage(){
         XStream xstream = new XStream();
         xstream.addPermission(AnyTypePermission.ANY);
@@ -119,13 +122,14 @@ public class LoginController {
                 in.close();
 
                 if(content.toString().equals("OK")){
-                    //App.setRoot("home"); to do
-                    textMessage.setText("pagina home");
+                    utente = fieldUsername.getText();
+                    App.setRoot("home", 1280, 800);
                 } else {
                     textMessage.setText(lang.erroreUserNotFound);  
                 }
 
             }catch(Exception e){
+                e.printStackTrace();
                 logger.error(e.getMessage());
             }
             return null;

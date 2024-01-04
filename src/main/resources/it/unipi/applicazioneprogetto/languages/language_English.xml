@@ -12,6 +12,15 @@
     <buttonRegistrazione>Create your account</buttonRegistrazione>
     <buttonGoToLogin>Go back to login page</buttonGoToLogin>
     <textLingua>Language</textLingua>
+    <idCol>Rank</idCol>
+    <nomeCol>Title</nomeCol>
+    <finishedCol>Finished</finishedCol>
+    <episodesCol>Episodes</episodesCol>
+    <scoreCol>Score</scoreCol>
+    <buttonLogout>Logout</buttonLogout>
+    <textBenvenuto>Welcome, </textBenvenuto>
+    <textCopertina>Cover</textCopertina>
+    <textTopCento>Top 100 Anime</textTopCento>
     <!-- messaggi di successo -->
     <correttaRegistrazione>Registration Complete!</correttaRegistrazione>
     <!-- messaggi di errore -->
