@@ -21,10 +21,27 @@
     <textBenvenuto>Benvenuto, </textBenvenuto>
     <textCopertina>Copertina</textCopertina>
     <textTopCento>Top 100 Anime</textTopCento>
+    <buttonMyList>Vai alla Mia Lista</buttonMyList>
+    <buttonTopCento>Vai alla Top 100</buttonTopCento>
+    <buttonAggiungi>Aggiungi alla Mia Lista</buttonAggiungi>
+    <textList>Nella Mia Lista</textList>
+    <labelMyScore>Il mio Punteggio</labelMyScore>
+    <labelNotes>Note</labelNotes>
+    <buttonSalvaModifiche>Salva modifiche</buttonSalvaModifiche>
+    <labelMyList>La Mia Lista</labelMyList>
     <!-- messaggi di successo -->
     <correttaRegistrazione>Registrazione Completata!</correttaRegistrazione>
+    <correttaAggiuntaAnime>Anime aggiunto alla Mia Lista!</correttaAggiuntaAnime>
+    <correttoUpdateAnime>Modifiche salvate correttamente!</correttoUpdateAnime>
     <!-- messaggi di errore -->
     <erroreUserPwdBlank>Inserisci il Nome Utente e/o la Password</erroreUserPwdBlank>  
     <erroreUserFound>Nome Utente già in uso</erroreUserFound>
-    <erroreUserNotFound>Il Nome Utente o la Password sono errati</erroreUserNotFound> 
+    <erroreUserNotFound>Il Nome Utente o la Password sono errati</erroreUserNotFound>
+    <erroreAnimeNotSelected>Seleziona un anime dalla tabella</erroreAnimeNotSelected>
+    <erroreAnimeAggiunto>Anime già presente nella Mia Lista</erroreAnimeAggiunto>
+    <erroreUpdateAnime>/</erroreUpdateAnime>
+    <erroreNoteLunghe>Note troppo lunghe. Il limite è 1000 caratteri</erroreNoteLunghe>
+    <erroreScoreFormat>Punteggio nel formato sbagliato. Inserire nel formato X o X.X</erroreScoreFormat>
+    <erroreScoreValue>Il valore del punteggio è errato. Inserire valore tra 0 e 10</erroreScoreValue>
+    <erroreCaratteri>Si prega di utilizzare solamente caratteri alfanumerici, numeri, e/o simboli comuni nel campo delle note</erroreCaratteri>
 </linguaggio>

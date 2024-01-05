@@ -39,12 +39,29 @@ public class Linguaggio implements Serializable{
     public String textBenvenuto;
     public String textCopertina;
     public String textTopCento;
+    public String buttonMyList;
+    public String buttonTopCento;
+    public String buttonAggiungi;
+    public String textList;
+    public String labelMyScore;
+    public String labelNotes;
+    public String buttonSalvaModifiche;
+    public String labelMyList;
     
     //messaggi di successo
     public String correttaRegistrazione;
+    public String correttaAggiuntaAnime;
+    public String correttoUpdateAnime;
     
     //messaggi di errore
     public String erroreUserPwdBlank;
     public String erroreUserFound;
     public String erroreUserNotFound;
+    public String erroreAnimeNotSelected;
+    public String erroreAnimeAggiunto;
+    public String erroreUpdateAnime;
+    public String erroreNoteLunghe;
+    public String erroreScoreFormat;
+    public String erroreScoreValue;
+    public String erroreCaratteri;
 }

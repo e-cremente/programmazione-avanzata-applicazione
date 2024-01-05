@@ -21,10 +21,27 @@
     <textBenvenuto>Welcome, </textBenvenuto>
     <textCopertina>Cover</textCopertina>
     <textTopCento>Top 100 Anime</textTopCento>
+    <buttonMyList>Go to My List</buttonMyList>
+    <buttonTopCento>Go to Top 100</buttonTopCento>
+    <buttonAggiungi>Add to My List</buttonAggiungi>
+    <textList>In My List</textList>
+    <labelMyScore>My Score</labelMyScore>
+    <labelNotes>Notes</labelNotes>
+    <buttonSalvaModifiche>Apply changes</buttonSalvaModifiche>
+    <labelMyList>My List</labelMyList>
     <!-- messaggi di successo -->
     <correttaRegistrazione>Registration Complete!</correttaRegistrazione>
+    <correttaAggiuntaAnime>Anime added to My List!</correttaAggiuntaAnime>
+    <correttoUpdateAnime>Changes saved correctly!</correttoUpdateAnime>
     <!-- messaggi di errore -->
     <erroreUserPwdBlank>Insert Username and/or Password</erroreUserPwdBlank>
     <erroreUserFound>Username already in use</erroreUserFound>
     <erroreUserNotFound>Username and/or Password are invalid</erroreUserNotFound>
+    <erroreAnimeNotSelected>Select an anime from the table</erroreAnimeNotSelected>
+    <erroreAnimeAggiunto>Anime already added in My List</erroreAnimeAggiunto>
+    <erroreUpdateAnime>/</erroreUpdateAnime>
+    <erroreNoteLunghe>Notes are too long. The limit is 1000 letters</erroreNoteLunghe>
+    <erroreScoreFormat>The score is in the wrong format. Insert in the format X or X.X</erroreScoreFormat>
+    <erroreScoreValue>The value of the score is wrong. Insert number between 0 and 10</erroreScoreValue>
+    <erroreCaratteri>Please only use alphanumeric characters, numbers, and/or common symbols in the note field</erroreCaratteri>
 </linguaggio>

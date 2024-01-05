@@ -8,7 +8,6 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import javafx.application.Platform;
 import javafx.concurrent.Task;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -16,7 +15,6 @@ import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -33,7 +31,6 @@ public class RegistrazioneController {
     @FXML private Text textLingua;
     @FXML private ChoiceBox choiceboxLingua;
     @FXML private Button buttonGoToLogin;
-    @FXML private VBox vboxRegistrazione;
        
     private static final Logger logger = LogManager.getLogger(LoginController.class);
     private Linguaggio lang;
@@ -63,6 +60,8 @@ public class RegistrazioneController {
         labelPwdReg.setText(lang.labelPwdReg);
         buttonRegistrazione.setText(lang.buttonRegistrazione);
         buttonGoToLogin.setText(lang.buttonGoToLogin);
+        textLingua.setText(lang.textLingua);
+        removeTemporary();
     }
     
     //funzione per registrare nel database un nuovo utente.

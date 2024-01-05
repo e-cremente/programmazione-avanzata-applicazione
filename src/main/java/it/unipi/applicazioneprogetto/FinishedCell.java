@@ -27,8 +27,8 @@ public class FinishedCell extends TableCell<Anime, String>{
         } else {
             Image img = new Image(getClass().getResource(url).toExternalForm());
             imageView.setImage(img);
-            imageView.setFitWidth(20);
-            imageView.setFitHeight(20);
+            imageView.setFitWidth(24);
+            imageView.setFitHeight(24);
             setGraphic(imageView);
         }
     }
