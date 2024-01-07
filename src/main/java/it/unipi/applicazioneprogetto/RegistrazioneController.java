@@ -2,12 +2,7 @@ package it.unipi.applicazioneprogetto;
 
 import com.thoughtworks.xstream.XStream;
 import com.thoughtworks.xstream.security.AnyTypePermission;
-import java.io.BufferedReader;
-import java.io.DataOutputStream;
 import java.io.IOException;
-import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
-import java.net.URL;
 import javafx.concurrent.Task;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -38,7 +33,7 @@ public class RegistrazioneController {
     //funzione di inizializzazione
     @FXML
     public void initialize(){
-        choiceboxLingua.getItems().addAll("Italiano", "English");
+        choiceboxLingua.getItems().addAll("Italiano", "English", "Chinese");
         choiceboxLingua.setValue(Linguaggio.lang);   
         choiceboxLingua.setOnAction(e -> {changeLanguage();});
         changeLanguage();            
@@ -75,33 +70,13 @@ public class RegistrazioneController {
         Task task = new Task<Void>(){
         @Override public Void call(){
             try{
-                //creo una connessione verso l'url, con i passaggi necessari per specificare che è POST
-                URL url = new URL("http://localhost:8080/utente");
-                HttpURLConnection con = (HttpURLConnection) url.openConnection();
-                con.setRequestMethod("POST");
-                con.setDoOutput(true);
-                //Se i dati da passare fossero in json includerei questa linea
-                con.setRequestProperty("Content-Type", "application/json");
+                
+                String url = "http://localhost:8080/utente";
+                String urlParameters = "{\"username\":\"" + fieldUserReg.getText() + "\", \"password\":\"" + fieldPwdReg.getText() + "\"}"; 
+                
+                String content = Utility.postJsonRequestStringAnswer(url, urlParameters);
 
-                //Scrivo la stringa di parametri che ho bisogno di passare
-                String urlParameters = "{\"username\":\"" + fieldUserReg.getText() + "\", \"password\":\"" + fieldPwdReg.getText() + "\"}";  
-
-                //La attacco all'url
-                DataOutputStream out = new DataOutputStream(con.getOutputStream());
-                out.writeBytes(urlParameters);
-                out.flush();
-                out.close();
-
-                //Ricevo la risposta
-                BufferedReader in = new BufferedReader(new InputStreamReader(con.getInputStream()));
-                String inputLine;
-                StringBuffer content = new StringBuffer();
-                while ((inputLine = in.readLine()) != null) {
-                    content.append(inputLine);
-                }
-                in.close();
-
-                if(content.toString().equals("OK")){
+                if(content.equals("OK")){
                     fieldUserReg.setDisable(true);
                     fieldPwdReg.setDisable(true);
                     buttonRegistrazione.setDisable(true);

@@ -4,18 +4,11 @@
  */
 package it.unipi.applicazioneprogetto;
 
-import com.google.gson.Gson;
 import com.google.gson.JsonArray;
-import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.thoughtworks.xstream.XStream;
 import com.thoughtworks.xstream.security.AnyTypePermission;
-import java.io.BufferedReader;
-import java.io.DataOutputStream;
 import java.io.IOException;
-import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
-import java.net.URL;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.concurrent.Task;
@@ -23,6 +16,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
+import javafx.scene.control.MenuItem;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextArea;
@@ -61,6 +55,7 @@ public class MylistController {
     @FXML private Label labelNotes;
     @FXML private TextArea textareaNotes;
     @FXML private Button buttonSalvaModifiche;
+    @FXML private MenuItem menuitemRemove;
     
     private static final Logger logger = LogManager.getLogger(HomeController.class);   
     private ObservableList<Anime> ol;
@@ -112,35 +107,11 @@ public class MylistController {
         Task task = new Task<Void>(){
         @Override public Void call(){
             try{
-                //faccio una richiesta POST verso un metodo che mi restituisce gli anime di un determinato utente
-                URL url = new URL("http://localhost:8080/join");
-                HttpURLConnection con = (HttpURLConnection) url.openConnection();
-                con.setRequestMethod("POST");
-                con.setDoOutput(true);
-
-                //Scrivo la stringa di parametri che ho bisogno di passare
-                String urlParameters = "username=" + LoginController.utente;  
-
-                //La attacco all'url
-                DataOutputStream out = new DataOutputStream(con.getOutputStream());
-                out.writeBytes(urlParameters);
-                out.flush();
-                out.close();
-
-                //Ricevo la risposta
-                BufferedReader in = new BufferedReader(new InputStreamReader(con.getInputStream()));
-                String inputLine;
-                StringBuffer content = new StringBuffer();
-                while ((inputLine = in.readLine()) != null) {
-                    content.append(inputLine);
-                }
-                in.close();
                 
-                Gson gson = new Gson();
+                String url = "http://localhost:8080/join";
+                String urlParameters = "username=" + LoginController.utente;
                 
-                JsonElement json = gson.fromJson(content.toString(), JsonElement.class);
-                
-                JsonArray anime = json.getAsJsonArray();
+                JsonArray anime = Utility.postStringRequestJsonAnswer(url, urlParameters).getAsJsonArray();
    
                 //in un ciclo, creo istanze di oggetti Anime e li aggiungo a ol cosicché vengano aggiunti alla tabella
                 for(int i = 0; i < anime.size(); i++){
@@ -169,7 +140,7 @@ public class MylistController {
         
         new Thread(task).start();
         
-        choiceboxLingua.getItems().addAll("Italiano", "English");
+        choiceboxLingua.getItems().addAll("Italiano", "English", "Chinese");
         choiceboxLingua.setValue(Linguaggio.lang);   
         choiceboxLingua.setOnAction(e -> {changeLanguage();});
         changeLanguage();
@@ -202,6 +173,7 @@ public class MylistController {
         buttonSalvaModifiche.setText(lang.buttonSalvaModifiche);
         labelMyList.setText(lang.labelMyList);
         textCopertina.setText(lang.textCopertina);
+        menuitemRemove.setText(lang.menuitemRemove);
         removeTemporary();
     }
     
@@ -232,37 +204,11 @@ public class MylistController {
         Task task = new Task<Void>(){
         @Override public Void call(){
             try{
-                //faccio una richiesta GET verso un metodo che mi restituisce tutto il contenuto della tabella anime
-                URL url = new URL("http://localhost:8080/getscorenotes");
-                HttpURLConnection con = (HttpURLConnection) url.openConnection();
-                con.setRequestMethod("POST");
-                con.setDoOutput(true);
-                //Se i dati da passare fossero in json includerei questa linea
-                con.setRequestProperty("Content-Type", "application/json");
                 
-                //Scrivo la stringa di parametri che ho bisogno di passare
-                String urlParameters = "{\"idanime\":\"" + tableviewMyAnime.getSelectionModel().getSelectedItem().getId() + "\", \"username\":\"" + LoginController.utente + "\"}";  
-
-                //La attacco all'url
-                DataOutputStream out = new DataOutputStream(con.getOutputStream());
-                out.writeBytes(urlParameters);
-                out.flush();
-                out.close();
+                String url = "http://localhost:8080/getscorenotes";
+                String urlParameters = "{\"idanime\":\"" + tableviewMyAnime.getSelectionModel().getSelectedItem().getId() + "\", \"username\":\"" + LoginController.utente + "\"}";
                 
-                BufferedReader in = new BufferedReader(new InputStreamReader(con.getInputStream()));
-                
-                String inputLine;
-                StringBuffer content = new StringBuffer();
-                while((inputLine = in.readLine()) != null){
-                    content.append(inputLine);
-                }
-                in.close();
-                
-                Gson gson = new Gson();
-                
-                JsonElement json = gson.fromJson(content.toString(), JsonElement.class);
-                
-                JsonObject anime = json.getAsJsonObject();
+                JsonObject anime = Utility.postJsonRequestJsonAnswer(url, urlParameters).getAsJsonObject();
                 
                 String scoreTrovato = anime.get("ownscore").getAsString();
                 String score = scoreTrovato.equals("0.0") ? "" : scoreTrovato.equals("10.0") ? "10" : scoreTrovato;
@@ -306,34 +252,13 @@ public class MylistController {
         @Override public Void call(){
             try{
                 
-                //creo una connessione verso l'url, con i passaggi necessari per specificare che è POST
-                URL url = new URL("http://localhost:8080/addscorenotes");
-                HttpURLConnection con = (HttpURLConnection) url.openConnection();
-                con.setRequestMethod("POST");
-                con.setDoOutput(true);
-                //Se i dati da passare fossero in json includerei questa linea
-                con.setRequestProperty("Content-Type", "application/json");
-                                
-                //Scrivo la stringa di parametri che ho bisogno di passare
+                String url = "http://localhost:8080/addscorenotes";
                 String urlParameters = "{\"idanime\":\"" + tableviewMyAnime.getSelectionModel().getSelectedItem().getId() + "\", \"username\":\"" + LoginController.utente + "\","
                                      + " \"ownscore\":\"" + textfieldMyScore.getText() + "\", \"notes\":\"" + textareaNotes.getText() +"\"}";  
-
-                //La attacco all'url
-                DataOutputStream out = new DataOutputStream(con.getOutputStream());
-                out.writeBytes(urlParameters);
-                out.flush();
-                out.close();
-
-                //Ricevo la risposta
-                BufferedReader in = new BufferedReader(new InputStreamReader(con.getInputStream()));
-                String inputLine;
-                StringBuffer content = new StringBuffer();
-                while ((inputLine = in.readLine()) != null) {
-                    content.append(inputLine);
-                }
-                in.close();
                 
-                if(content.toString().equals("OK")){
+                String content = Utility.postJsonRequestStringAnswer(url, urlParameters);
+                
+                if(content.equals("OK")){
                     textMessage.setText(lang.correttoUpdateAnime);
                 } else {
                     textMessage.setText(lang.erroreUpdateAnime);
@@ -345,6 +270,36 @@ public class MylistController {
                 logger.error(e.getMessage());
                 textMessage.setText(lang.erroreCaratteri);
                 buttonSalvaModifiche.setDisable(false);
+            }
+            return null;
+        }    
+        };
+        
+        new Thread(task).start();
+    }
+    
+    //Metodo che rimuove un anime dal database e conseguentemente dalla mia lista.
+    //Invocato quando si preme remove dal context menu
+    @FXML
+    private void removeAnime(){
+        Task task = new Task<Void>(){
+        @Override public Void call(){
+            try{
+                Anime a = tableviewMyAnime.getSelectionModel().getSelectedItem();
+                
+                String url = "http://localhost:8080/remove";
+                String urlParameters = "{\"idanime\":\"" + a.getId() + "\", \"username\":\"" + LoginController.utente + "\"}";  
+                
+                String content = Utility.postJsonRequestStringAnswer(url, urlParameters);
+                
+                if(content.equals("OK")){
+                    ol.remove(a);
+                } else {
+                    textMessage.setText(lang.erroreUpdateAnime);
+                }
+                
+            }catch(Exception e){
+                logger.error(e.getMessage());
             }
             return null;
         }    

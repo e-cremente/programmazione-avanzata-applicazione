@@ -1,0 +1,48 @@
+<linguaggio>
+    <!-- oggetti interfaccia grafica -->
+    <textTitle>MyAnimeTracker</textTitle>
+    <textUsername>用户名</textUsername>
+    <textPassword>密码</textPassword>
+    <buttonLogin>登录</buttonLogin>
+    <textRegister>还没注册？</textRegister>
+    <buttonRegister>注册</buttonRegister>
+    <textRegistrati>注册</textRegistrati>
+    <labelUserReg>用户名</labelUserReg>
+    <labelPwdReg>密码</labelPwdReg>
+    <buttonRegistrazione>注册你的账号</buttonRegistrazione>
+    <buttonGoToLogin>返回登录页面</buttonGoToLogin>
+    <textLingua>语言</textLingua>
+    <idCol>排名</idCol>
+    <nomeCol>名字</nomeCol>
+    <finishedCol>已完结</finishedCol>
+    <episodesCol>集数</episodesCol>
+    <scoreCol>评分</scoreCol>
+    <buttonLogout>登出</buttonLogout>
+    <textBenvenuto>欢迎， </textBenvenuto>
+    <textCopertina>封面</textCopertina>
+    <textTopCento>排名前100的动漫</textTopCento>
+    <buttonMyList>查看我的列表</buttonMyList>
+    <buttonTopCento>查看前100名</buttonTopCento>
+    <buttonAggiungi>添加到我的列表</buttonAggiungi>
+    <textList>已在我的列表</textList>
+    <labelMyScore>我的评分</labelMyScore>
+    <labelNotes>笔记</labelNotes>
+    <buttonSalvaModifiche>应用更改</buttonSalvaModifiche>
+    <labelMyList>我的列表</labelMyList>
+    <menuitemRemove>移除</menuitemRemove>
+    <!-- messaggi di successo -->
+    <correttaRegistrazione>注册成功！</correttaRegistrazione>
+    <correttaAggiuntaAnime>动漫已添加到我的列表！</correttaAggiuntaAnime>
+    <correttoUpdateAnime>更改已正确保存</correttoUpdateAnime>
+    <!-- messaggi di errore -->
+    <erroreUserPwdBlank>请输入用户名和/或密码</erroreUserPwdBlank>
+    <erroreUserFound>用户名已被使用</erroreUserFound>
+    <erroreUserNotFound>用户名和/或密码无效</erroreUserNotFound>
+    <erroreAnimeNotSelected>从表中选择一部动漫</erroreAnimeNotSelected>
+    <erroreAnimeAggiunto>动漫已添加到我的列表</erroreAnimeAggiunto>
+    <erroreUpdateAnime>/</erroreUpdateAnime>
+    <erroreNoteLunghe>笔记太长了。 上限是1000字母</erroreNoteLunghe>
+    <erroreScoreFormat>评分格式不正确。请使用 X 或 X.X 的格式</erroreScoreFormat>
+    <erroreScoreValue>评分数值错误。请输入0到10之间的数字</erroreScoreValue>
+    <erroreCaratteri>请在笔记字段中仅使用字母数字字符和/或常见符号</erroreCaratteri>
+</linguaggio>

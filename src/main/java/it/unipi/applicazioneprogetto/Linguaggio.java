@@ -47,6 +47,7 @@ public class Linguaggio implements Serializable{
     public String labelNotes;
     public String buttonSalvaModifiche;
     public String labelMyList;
+    public String menuitemRemove;
     
     //messaggi di successo
     public String correttaRegistrazione;

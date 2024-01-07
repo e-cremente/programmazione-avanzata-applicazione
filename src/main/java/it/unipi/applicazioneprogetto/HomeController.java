@@ -4,18 +4,11 @@
  */
 package it.unipi.applicazioneprogetto;
 
-import com.google.gson.Gson;
 import com.google.gson.JsonArray;
-import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.thoughtworks.xstream.XStream;
 import com.thoughtworks.xstream.security.AnyTypePermission;
-import java.io.BufferedReader;
-import java.io.DataOutputStream;
 import java.io.IOException;
-import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
-import java.net.URL;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.concurrent.Task;
@@ -108,25 +101,10 @@ public class HomeController{
         Task task = new Task<Void>(){
         @Override public Void call(){
             try{
-                //faccio una richiesta GET verso un metodo che mi restituisce tutto il contenuto della tabella anime
-                URL url = new URL("http://localhost:8080/all");
-                HttpURLConnection con = (HttpURLConnection) url.openConnection();
-                con.setRequestMethod("GET");
                 
-                BufferedReader in = new BufferedReader(new InputStreamReader(con.getInputStream()));
+                String url = "http://localhost:8080/all";
                 
-                String inputLine;
-                StringBuffer content = new StringBuffer();
-                while((inputLine = in.readLine()) != null){
-                    content.append(inputLine);
-                }
-                in.close();
-                
-                Gson gson = new Gson();
-                
-                JsonElement json = gson.fromJson(content.toString(), JsonElement.class);
-                
-                JsonArray anime = json.getAsJsonArray();
+                JsonArray anime = Utility.getRequestJsonAnswer(url);
                 
                 //in un ciclo, creo istanze di oggetti Anime e li aggiungo a ol cosicché vengano aggiunti alla tabella
                 for(int i = 0; i < anime.size(); i++){
@@ -146,6 +124,7 @@ public class HomeController{
                 
             }catch(Exception e){
                 e.printStackTrace();
+                logger.error(e.getMessage());
             }
             return null;
         }    
@@ -155,7 +134,7 @@ public class HomeController{
         
         logger.debug("Tabella inizializzata e pagina caricata.");
         
-        choiceboxLingua.getItems().addAll("Italiano", "English");
+        choiceboxLingua.getItems().addAll("Italiano", "English", "Chinese");
         choiceboxLingua.setValue(Linguaggio.lang);   
         choiceboxLingua.setOnAction(e -> {changeLanguage();});
         changeLanguage();
@@ -201,41 +180,22 @@ public class HomeController{
         checkIfInList();
     }
     
+    //metodo che mostra un'immagine casuale a seconda se l'anime selezionato nella tabella appartiene 
+    //alla propria lista oppure no.
+    //invocato da updateImg ogni volta che si clicca sulla tabella
     private void checkIfInList(){
         Task task = new Task<Void>(){
         @Override public Void call(){
-            try{
+            try{               
+                String url = "http://localhost:8080/findjoin";
+                String urlParameters = "{\"idanime\":\"" + tableviewAnime.getSelectionModel().getSelectedItem().getId() + "\", \"username\":\"" + LoginController.utente + "\"}";
                 
-                //creo una connessione verso l'url, con i passaggi necessari per specificare che è POST
-                URL url = new URL("http://localhost:8080/findjoin");
-                HttpURLConnection con = (HttpURLConnection) url.openConnection();
-                con.setRequestMethod("POST");
-                con.setDoOutput(true);
-                //Se i dati da passare fossero in json includerei questa linea
-                con.setRequestProperty("Content-Type", "application/json");
-                
-                //Scrivo la stringa di parametri che ho bisogno di passare
-                String urlParameters = "{\"idanime\":\"" + tableviewAnime.getSelectionModel().getSelectedItem().getId() + "\", \"username\":\"" + LoginController.utente + "\"}";  
-
-                //La attacco all'url
-                DataOutputStream out = new DataOutputStream(con.getOutputStream());
-                out.writeBytes(urlParameters);
-                out.flush();
-                out.close();
-
-                //Ricevo la risposta
-                BufferedReader in = new BufferedReader(new InputStreamReader(con.getInputStream()));
-                String inputLine;
-                StringBuffer content = new StringBuffer();
-                while ((inputLine = in.readLine()) != null) {
-                    content.append(inputLine);
-                }
-                in.close();
+                String content = Utility.postJsonRequestStringAnswer(url, urlParameters);
 
                 int imagenumber = (int)(Math.random() * 6) + 1;
-                String urlImage = "";
+                String urlImage;
                 
-                if(content.toString().equals("OK")){
+                if(content.equals("OK")){
                     urlImage = "img/yes/yes";                
                 } else {
                     urlImage = "img/no/no";      
@@ -268,6 +228,8 @@ public class HomeController{
         App.setRoot("mylist");
     }
     
+    //metodo che aggiunge l'anime selezionato alla mia lista
+    //invocato alla pressione del tasto aggiungi alla mia lista
     @FXML
     private void addAnime(){
         removeTemporary();
@@ -279,33 +241,13 @@ public class HomeController{
         Task task = new Task<Void>(){
         @Override public Void call(){
             try{
-                //creo una connessione verso l'url, con i passaggi necessari per specificare che è POST
-                URL url = new URL("http://localhost:8080/addtouserlist");
-                HttpURLConnection con = (HttpURLConnection) url.openConnection();
-                con.setRequestMethod("POST");
-                con.setDoOutput(true);
-                //Se i dati da passare fossero in json includerei questa linea
-                con.setRequestProperty("Content-Type", "application/json");
                 
-                //Scrivo la stringa di parametri che ho bisogno di passare
+                String url = "http://localhost:8080/addtouserlist";
                 String urlParameters = "{\"idanime\":\"" + String.valueOf(a.getId()) + "\", \"username\":\"" + LoginController.utente + "\"}";  
+                
+                String content = Utility.postJsonRequestStringAnswer(url, urlParameters);
 
-                //La attacco all'url
-                DataOutputStream out = new DataOutputStream(con.getOutputStream());
-                out.writeBytes(urlParameters);
-                out.flush();
-                out.close();
-
-                //Ricevo la risposta
-                BufferedReader in = new BufferedReader(new InputStreamReader(con.getInputStream()));
-                String inputLine;
-                StringBuffer content = new StringBuffer();
-                while ((inputLine = in.readLine()) != null) {
-                    content.append(inputLine);
-                }
-                in.close();
-
-                if(content.toString().equals("OK")){
+                if(content.equals("OK")){
                     textMessage.setText(lang.correttaAggiuntaAnime);                  
                 } else {
                     textMessage.setText(lang.erroreAnimeAggiunto);  

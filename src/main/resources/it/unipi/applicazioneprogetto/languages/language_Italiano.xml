@@ -29,6 +29,7 @@
     <labelNotes>Note</labelNotes>
     <buttonSalvaModifiche>Salva modifiche</buttonSalvaModifiche>
     <labelMyList>La Mia Lista</labelMyList>
+    <menuitemRemove>Rimuovi</menuitemRemove>
     <!-- messaggi di successo -->
     <correttaRegistrazione>Registrazione Completata!</correttaRegistrazione>
     <correttaAggiuntaAnime>Anime aggiunto alla Mia Lista!</correttaAggiuntaAnime>

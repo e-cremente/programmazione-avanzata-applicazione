@@ -8,7 +8,6 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-
 <VBox fx:id="vboxMyList" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseReleased="#removeTemporary" prefHeight="800.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.unipi.applicazioneprogetto.MylistController">
    <children>
       <AnchorPane prefHeight="110.0" prefWidth="1041.0">
@@ -23,7 +22,14 @@
       </AnchorPane>
       <Pane prefHeight="591.0" prefWidth="1280.0">
          <children>
-            <TableView fx:id="tableviewMyAnime" layoutX="50.0" layoutY="51.0" onMouseReleased="#updateImg" prefHeight="479.0" prefWidth="554.0" />
+            <TableView fx:id="tableviewMyAnime" layoutX="50.0" layoutY="51.0" onMouseReleased="#updateImg" prefHeight="479.0" prefWidth="554.0">
+               <contextMenu>
+                  <ContextMenu>
+                    <items>
+                      <MenuItem fx:id="menuitemRemove" mnemonicParsing="false" onAction="#removeAnime" text="Remove" />
+                    </items>
+                  </ContextMenu>
+               </contextMenu></TableView>
             <Text fx:id="textMessage" layoutX="464.0" layoutY="562.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="353.0" />
             <ImageView fx:id="imageviewAnime" fitHeight="479.0" fitWidth="353.0" layoutX="610.0" layoutY="51.0" pickOnBounds="true" preserveRatio="true" />
             <Label fx:id="labelMyScore" layoutX="1023.0" layoutY="36.0" text="Il mio Punteggio">
