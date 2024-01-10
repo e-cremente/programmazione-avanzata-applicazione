@@ -134,7 +134,7 @@ public class HomeController{
         
         logger.debug("Tabella inizializzata e pagina caricata.");
         
-        choiceboxLingua.getItems().addAll("Italiano", "English", "Chinese");
+        choiceboxLingua.getItems().addAll("Italiano", "English", "中文");
         choiceboxLingua.setValue(Linguaggio.lang);   
         choiceboxLingua.setOnAction(e -> {changeLanguage();});
         changeLanguage();
@@ -268,6 +268,6 @@ public class HomeController{
     @FXML
     private void logout() throws IOException{
         LoginController.utente = "";
-        App.setRoot("login", 640, 480);
+        App.setRoot("login", 700, 540);
     }
 }

@@ -44,7 +44,7 @@ public class MylistController {
     @FXML private TableColumn episodesCol;
     @FXML private TableColumn scoreCol;
     @FXML private Label labelMyList;
-    @FXML private Label textCopertina;
+    @FXML private Label textCopertinaList;
     @FXML private Button buttonTopCento;
     @FXML private Text textLingua;
     @FXML private ChoiceBox choiceboxLingua;
@@ -140,7 +140,7 @@ public class MylistController {
         
         new Thread(task).start();
         
-        choiceboxLingua.getItems().addAll("Italiano", "English", "Chinese");
+        choiceboxLingua.getItems().addAll("Italiano", "English", "中文");
         choiceboxLingua.setValue(Linguaggio.lang);   
         choiceboxLingua.setOnAction(e -> {changeLanguage();});
         changeLanguage();
@@ -172,7 +172,7 @@ public class MylistController {
         labelNotes.setText(lang.labelNotes);
         buttonSalvaModifiche.setText(lang.buttonSalvaModifiche);
         labelMyList.setText(lang.labelMyList);
-        textCopertina.setText(lang.textCopertina);
+        textCopertinaList.setText(lang.textCopertina);
         menuitemRemove.setText(lang.menuitemRemove);
         removeTemporary();
     }

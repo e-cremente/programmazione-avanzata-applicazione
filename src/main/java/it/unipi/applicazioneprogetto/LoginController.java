@@ -35,7 +35,7 @@ public class LoginController {
     //funzione di inizializzazione
     @FXML
     public void initialize(){
-        choiceboxLingua.getItems().addAll("Italiano", "English", "Chinese");
+        choiceboxLingua.getItems().addAll("Italiano", "English", "中文");
         choiceboxLingua.setValue(Linguaggio.lang);   
         choiceboxLingua.setOnAction(e -> {changeLanguage();});
         changeLanguage();

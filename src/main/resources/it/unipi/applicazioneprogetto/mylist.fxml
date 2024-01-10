@@ -12,7 +12,7 @@
    <children>
       <AnchorPane prefHeight="110.0" prefWidth="1041.0">
          <children>
-            <Text fx:id="textLingua" layoutX="1143.0" layoutY="38.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Lingua">
+            <Text fx:id="textLingua" layoutX="1086.0" layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Lingua" wrappingWidth="150.0">
                <font>
                   <Font size="12.0" />
                </font>
@@ -32,30 +32,30 @@
                </contextMenu></TableView>
             <Text fx:id="textMessage" layoutX="464.0" layoutY="562.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="353.0" />
             <ImageView fx:id="imageviewAnime" fitHeight="479.0" fitWidth="353.0" layoutX="610.0" layoutY="51.0" pickOnBounds="true" preserveRatio="true" />
-            <Label fx:id="labelMyScore" layoutX="1023.0" layoutY="36.0" text="Il mio Punteggio">
+            <Label fx:id="labelMyScore" layoutX="969.0" layoutY="36.0" prefHeight="30.0" prefWidth="261.0" text="Il mio Punteggio">
                <font>
                   <Font name="System Bold" size="20.0" />
                </font>
             </Label>
-            <TextField fx:id="textfieldMyScore" layoutX="1009.0" layoutY="80.0" prefHeight="100.0" prefWidth="186.0">
+            <TextField fx:id="textfieldMyScore" layoutX="969.0" layoutY="80.0" prefHeight="159.0" prefWidth="261.0">
                <font>
                   <Font size="75.0" />
                </font>
             </TextField>
-            <Label fx:id="labelNotes" layoutX="1074.0" layoutY="253.0" text="Notes">
+            <Label fx:id="labelNotes" layoutX="971.0" layoutY="253.0" prefHeight="30.0" prefWidth="261.0" text="Notes">
                <font>
                   <Font name="System Bold" size="20.0" />
                </font>
             </Label>
             <TextArea fx:id="textareaNotes" layoutX="971.0" layoutY="291.0" prefHeight="239.0" prefWidth="261.0" wrapText="true" />
-            <Label fx:id="labelMyList" layoutX="271.0" layoutY="14.0" prefHeight="30.0" prefWidth="112.0" text="La Mia Lista">
+            <Label fx:id="labelMyList" layoutX="50.0" prefHeight="45.0" prefWidth="554.0" text="La Mia Lista">
                <font>
-                  <Font name="System Bold" size="20.0" />
+                  <Font name="System Bold" size="30.0" />
                </font>
             </Label>
-            <Label fx:id="textCopertina" layoutX="740.0" layoutY="14.0" text="Copertina">
+            <Label fx:id="textCopertinaList" layoutX="611.0" prefHeight="45.0" prefWidth="338.0" text="Copertina">
                <font>
-                  <Font name="System Bold" size="20.0" />
+                  <Font name="System Bold" size="30.0" />
                </font>
             </Label>
          </children>

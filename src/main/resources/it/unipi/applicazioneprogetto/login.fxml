@@ -16,7 +16,7 @@
    <children>
       <AnchorPane prefHeight="55.0" prefWidth="741.0">
          <children>
-            <Text fx:id="textLingua" layoutX="523.0" layoutY="18.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Lingua">
+            <Text fx:id="textLingua" layoutX="466.0" layoutY="18.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Lingua" wrappingWidth="150.0">
                <font>
                   <Font size="12.0" />
                </font>
@@ -24,18 +24,26 @@
             <ChoiceBox fx:id="choiceboxLingua" layoutX="466.0" layoutY="23.0" prefWidth="150.0" />
          </children>
       </AnchorPane>
-      <Text fx:id="textTitle" strokeType="OUTSIDE" strokeWidth="0.0" text="MyAnimeTracker" textAlignment="CENTER" textOrigin="TOP">
+      <Text fx:id="textTitle" strokeType="OUTSIDE" strokeWidth="0.0" text="MyAnimeTracker" textAlignment="CENTER" textOrigin="TOP" wrappingWidth="284.3330078125">
          <font>
             <Font name="System Bold" size="30.0" />
          </font>
       </Text>
-      <Label fx:id="textUsername" text="Username" />
-      <TextField fx:id="fieldUsername" prefHeight="18.0" prefWidth="600.0" />
-      <Label fx:id="textPassword" text="Password" />
-      <PasswordField fx:id="fieldPassword" />
+      <Label fx:id="textUsername" text="Username">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+      <TextField fx:id="fieldUsername" prefHeight="31.0" prefWidth="241.0" />
+      <Label fx:id="textPassword" text="Password">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+      <PasswordField fx:id="fieldPassword" prefHeight="31.0" prefWidth="241.0" />
       <Button fx:id="buttonLogin" onAction="#login" text="Login" />
       <Text fx:id="textRegister" strokeType="OUTSIDE" strokeWidth="0.0" text="Non sei ancora registrato?" />
-      <Button fx:id="buttonRegister" mnemonicParsing="false" onAction="#goToRegistrationPage" text="Registrati" />
+      <Button fx:id="buttonRegister" mnemonicParsing="false" onAction="#goToRegistrationPage" prefHeight="9.0" prefWidth="83.0" text="Registrati" />
       <Text fx:id="textMessage" strokeType="OUTSIDE" strokeWidth="0.0" />
    </children>
    <padding>

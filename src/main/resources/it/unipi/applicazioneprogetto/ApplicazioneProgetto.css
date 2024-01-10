@@ -1,0 +1,127 @@
+/*classi*/
+
+.root{
+    -fx-background-color: #333538;
+}
+
+.text-field{
+    -fx-background-color: #ccd2db;
+    -fx-border-style: solid;
+    -fx-border-color: #0567fa;
+    -fx-border-width: 2px;
+}
+
+.button {    
+    -fx-background-color: 
+        #000000,
+        linear-gradient(#7ebcea, #2f4b8f),
+        linear-gradient(#426ab7, #263e75),
+        linear-gradient(#395cab, #223768);
+    -fx-background-insets: 0,1,2,3;
+    -fx-background-radius: 3,2,2,2;
+    -fx-padding: 6 15 6 15;
+    -fx-text-fill: white;
+    -fx-effect: dropshadow(gaussian, #6ea9f5, 4, 0, 0, 4);
+}
+
+.button:hover{
+    -fx-background-color: 
+        #000000,
+        linear-gradient(#9dcbed, #485c8c),
+        linear-gradient(#5a7ab8, #344875),
+        linear-gradient(#506cab, #2d3e66);
+}
+
+.button:pressed{
+    -fx-effect: dropshadow(gaussian, #0567fa, 4, 0, 0, 2);
+    -fx-translate-y: 2;
+}
+
+/*
+DI SEGUITO PER MODIFICARE LA CHOICE BOX CON LE LINGUE
+*/
+/*colore background del context menu*/
+.choice-box .context-menu{
+    -fx-background-color: #ccd2db;
+}
+/*colore del background dell'oggetto con il focus*/
+.choice-box .menu-item:focused{
+    -fx-background-color: #0567fa;
+}
+/*colore di sfondo, bordi, e freccetta della choicebox vera e propria*/
+.choice-box{
+    -fx-background-color: #ccd2db;
+    -fx-border-style: solid;
+    -fx-border-color: #0567fa;
+    -fx-border-width: 2px;
+    -fx-mark-color: #0567fa;
+}
+/*colore testo selezionato*/
+.choice-box > .label{
+    -fx-font-weight: bold;
+}
+/*id specifici*/
+
+#textTitle, #textRegistrati, #textList, #textCopertina, #textTopCento{
+    -fx-fill: "white";
+    -fx-effect: dropshadow(gaussian, #0567fa, 5, 1, 1, 1);
+    -fx-text-alignment: center;
+}
+
+#textCopertinaList, #labelMyList{
+    -fx-text-fill: "white";
+    -fx-effect: dropshadow(gaussian, #0567fa, 5, 1, 1, 1);
+    -fx-alignment: center;
+}
+
+#labelMyScore, #labelNotes{
+    -fx-text-fill: "white";
+    -fx-effect: dropshadow(gaussian, #0567fa, 3.5, 1, 1, 1);
+    -fx-alignment: center;
+}
+
+#textUsername, #textPassword, #labelUserReg, #labelPwdReg{
+    -fx-text-fill: "white";
+}
+
+#textRegister, #textMessage{
+    -fx-fill: "white";
+}
+
+#textLingua{
+    -fx-fill: "white";
+    -fx-font-weight: bold;
+    -fx-text-alignment: center;
+}
+
+#imageviewAnime{
+    -fx-border-style: solid;
+    -fx-border-color: #0567fa;
+    -fx-border-width: 2px;
+}
+
+#textBenvenuto{
+    -fx-fill: "white";
+    -fx-effect: dropshadow(gaussian, #0567fa, 10, 0.4, 3, 1);
+}
+
+#textfieldMyScore{
+    -fx-background-color: linear-gradient(to bottom right, #a9c5f5, #658ed6);
+    -fx-background-radius: 9px;
+    -fx-border-width: 5px;
+    -fx-border-radius: 5px;
+    -fx-alignment: center;
+}
+
+#textareaNotes{
+    -fx-border-style: solid;
+    -fx-border-color: #0567fa;
+    -fx-border-width: 5px;
+    -fx-border-radius: 5px;
+    -fx-background-radius: 9px;
+    -fx-background-color: linear-gradient(to bottom right, #a9c5f5, #658ed6);
+}
+
+#textareaNotes .content{
+    -fx-background-color: linear-gradient(to bottom right, #a9c5f5, #658ed6);
+}

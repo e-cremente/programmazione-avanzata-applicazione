@@ -15,7 +15,7 @@
     <children>
       <AnchorPane prefHeight="55.0" prefWidth="741.0">
          <children>
-            <Text fx:id="textLingua" layoutX="523.0" layoutY="18.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Lingua">
+            <Text fx:id="textLingua" layoutX="466.0" layoutY="18.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Lingua" wrappingWidth="150.0">
                <font>
                   <Font size="12.0" />
                </font>
@@ -25,12 +25,18 @@
       </AnchorPane>
       <Text fx:id="textRegistrati" strokeType="OUTSIDE" strokeWidth="0.0" text="Registrati">
          <font>
-            <Font name="System Bold" size="25.0" />
+            <Font name="System Bold" size="30.0" />
          </font>
       </Text>
-      <Label fx:id="labelUserReg" text="Username" />
+      <Label fx:id="labelUserReg" text="Username">
+         <font>
+            <Font size="16.0" />
+         </font></Label>
       <TextField fx:id="fieldUserReg" />
-      <Label fx:id="labelPwdReg" text="Password" />
+      <Label fx:id="labelPwdReg" text="Password">
+         <font>
+            <Font size="16.0" />
+         </font></Label>
       <PasswordField fx:id="fieldPwdReg" />
         <Button fx:id="buttonRegistrazione" onAction="#registraUtente" text="Crea il tuo account" />
       <Button fx:id="buttonGoToLogin" mnemonicParsing="false" onAction="#goToLogin" text="vai al login" />
