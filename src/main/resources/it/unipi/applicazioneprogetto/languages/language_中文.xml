@@ -45,4 +45,5 @@
     <erroreScoreFormat>评分格式不正确。请使用 X 或 X.X 的格式</erroreScoreFormat>
     <erroreScoreValue>评分数值错误。请输入0到10之间的数字</erroreScoreValue>
     <erroreCaratteri>请在笔记字段中仅使用字母数字字符和/或常见符号</erroreCaratteri>
+    <erroreAnimeNonPresenti>请从排名前100的列表里选择一部动漫</erroreAnimeNonPresenti>
 </linguaggio>

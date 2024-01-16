@@ -45,4 +45,5 @@
     <erroreScoreFormat>The score is in the wrong format. Insert in the format X or X.X</erroreScoreFormat>
     <erroreScoreValue>The value of the score is wrong. Insert number between 0 and 10</erroreScoreValue>
     <erroreCaratteri>Please only use alphanumeric characters, numbers, and/or common symbols in the note field</erroreCaratteri>
+    <erroreAnimeNonPresenti>Insert an anime from the top 100 table first</erroreAnimeNonPresenti>
 </linguaggio>

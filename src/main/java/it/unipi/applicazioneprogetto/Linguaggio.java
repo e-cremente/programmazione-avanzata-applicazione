@@ -65,4 +65,5 @@ public class Linguaggio implements Serializable{
     public String erroreScoreFormat;
     public String erroreScoreValue;
     public String erroreCaratteri;
+    public String erroreAnimeNonPresenti;
 }

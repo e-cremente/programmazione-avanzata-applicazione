@@ -125,11 +125,13 @@ public class MylistController {
                 }
                 
                 //Mostro l'immagine del primo anime nella lista
-                Anime firstAnime = ol.get(0);
-                if(firstAnime != null){
-                    imageAnime = new Image(firstAnime.getImage()); 
-                    imageviewAnime.setImage(imageAnime);
-                }                  
+                if(!ol.isEmpty()){
+                    Anime firstAnime = ol.get(0);
+                    if(firstAnime != null){
+                        imageAnime = new Image(firstAnime.getImage()); 
+                        imageviewAnime.setImage(imageAnime);
+                    }      
+                }
                 
             }catch(Exception e){
                 e.printStackTrace();
@@ -198,6 +200,12 @@ public class MylistController {
     private void updateImg(){
         removeTemporary();
         Anime a = tableviewMyAnime.getSelectionModel().getSelectedItem();
+        
+        if(a == null){
+            textMessage.setText(lang.erroreAnimeNonPresenti);
+            return;
+        }
+        
         imageAnime = new Image(a.getImage()); 
         imageviewAnime.setImage(imageAnime);
         

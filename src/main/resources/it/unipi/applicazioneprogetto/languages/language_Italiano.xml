@@ -45,4 +45,5 @@
     <erroreScoreFormat>Punteggio nel formato sbagliato. Inserire nel formato X o X.X</erroreScoreFormat>
     <erroreScoreValue>Il valore del punteggio è errato. Inserire valore tra 0 e 10</erroreScoreValue>
     <erroreCaratteri>Si prega di utilizzare solamente caratteri alfanumerici, numeri, e/o simboli comuni nel campo delle note</erroreCaratteri>
+    <erroreAnimeNonPresenti>Inserisci prima un anime dalla tabella della top 100</erroreAnimeNonPresenti>
 </linguaggio>
